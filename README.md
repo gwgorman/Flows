@@ -15,4 +15,4 @@ The flow also detects your input language and translates the output on-the-fly t
 <p>
   <b>LewisvileLakeInfo.json</b> - This flow connects to USGS real time data and displays information about Lewisville Lake, TX on a Node-RED dashboard. I also show how to store and retrieve history for the Chart widget, as well as process an array. I also show how to change a Button's color and icon (h/t @dceejay) to show 3-value data and collect a trend for the lake level. Even put in a little JSONata trick to calculate the line slope.... 
   </p>
-  
+<img src=LakeDash.png>  
