@@ -12,3 +12,7 @@ The flow also detects your input language and translates the output on-the-fly t
 <p>
 <b>TalkingTJBot.json</b> - This is my implementation of a fun talking TJBot. It uses multiple IBM Watson services for speech and text, IBM Weather Company interfaces and IBM Watson image analytics to respond to various voice commands. Key component is the use of Snowboy for 'wake word' detection. A simple Switch statement looking for key words is used to determine which desired command to run. Future versions will use IBM Watson Conversation services. 
 </p>
+<p>
+  <b>LewisvileLakeInfo.json</b> - This flow connects to USGS real time data and displays information about Lewisville Lake, TX on a Node-RED dashboard. I also show how to store and retrieve history for the Chart widget, as well as process an array. I also show how to change a Button's color and icon (h/t @dceejay) to show 3-value data and collect a trend for the lake level. 
+  </p>
+  
