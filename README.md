@@ -18,6 +18,6 @@ The flow also detects your input language and translates the output on-the-fly t
 <img src=LakeDash.png>  
 <p>
   <b>DomoticzFlows.json</b> - This flow reads data sniffed by my 433Mhz radio connected to Domoticz. I can pick up 100's of devices in my neighborhood, but only showing a few thermometers and an RF remote on/off switch for a cabinet in my office. It builds a dashboard that looks like this: 
-  <img src=DomoticzDashboard.png>
   </p>
+  <img src=DomoticzDashboard.png>
   
