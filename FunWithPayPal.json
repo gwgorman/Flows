@@ -1,0 +1,1538 @@
+[
+    {
+        "id": "21352aaf323425fc",
+        "type": "tab",
+        "label": "PayPal REST",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9d0b790a3a03b629",
+        "type": "tab",
+        "label": "SDK Tests",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "67cf05fd9e508399",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "ad6280028f91aba9",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "c824ef0fd6364802",
+        "type": "ui_group",
+        "name": "GG Store",
+        "tab": "67cf05fd9e508399",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "d29cf2d364df08b6",
+        "type": "catch",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 381,
+        "y": 281,
+        "wires": [
+            [
+                "820d27063d7aceec"
+            ]
+        ]
+    },
+    {
+        "id": "820d27063d7aceec",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 622,
+        "y": 284,
+        "wires": []
+    },
+    {
+        "id": "3589f0f502b6189b",
+        "type": "http request",
+        "z": "21352aaf323425fc",
+        "name": "Log into PayPal",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-m.sandbox.paypal.com/v1/oauth2/token ",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 817,
+        "y": 403,
+        "wires": [
+            [
+                "f68e2429ab7af0f6",
+                "1e78a7538f270961"
+            ]
+        ]
+    },
+    {
+        "id": "eada1d4a992b54ef",
+        "type": "credentials",
+        "z": "21352aaf323425fc",
+        "name": "PayPal Credentials",
+        "props": [
+            {
+                "value": "Username",
+                "type": "flow"
+            },
+            {
+                "value": "Password",
+                "type": "flow"
+            }
+        ],
+        "x": 303,
+        "y": 401,
+        "wires": [
+            [
+                "8c9cd3e4bf439ab0"
+            ]
+        ]
+    },
+    {
+        "id": "d911154f32c890c6",
+        "type": "inject",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 125,
+        "y": 399,
+        "wires": [
+            [
+                "eada1d4a992b54ef"
+            ]
+        ]
+    },
+    {
+        "id": "8c9cd3e4bf439ab0",
+        "type": "change",
+        "z": "21352aaf323425fc",
+        "name": "Set HTTP AUTH Message",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.Accept",
+                "pt": "msg",
+                "to": "application/json",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Accept-Language",
+                "pt": "msg",
+                "to": "en_US",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "grant_type=client_credentials",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Authorization",
+                "pt": "msg",
+                "to": "\"Basic \" & $base64encode(\t   $flowContext('Username') & \":\" & $flowContext('Password')\t)",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "headers.Content-Type",
+                "pt": "msg",
+                "to": "application/x-www-form-urlencoded",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 580,
+        "y": 402,
+        "wires": [
+            [
+                "3589f0f502b6189b",
+                "ce0f20e488350a54"
+            ]
+        ]
+    },
+    {
+        "id": "ce0f20e488350a54",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 894,
+        "y": 345,
+        "wires": []
+    },
+    {
+        "id": "f68e2429ab7af0f6",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1087,
+        "y": 354,
+        "wires": []
+    },
+    {
+        "id": "88239836e1ced690",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 991,
+        "y": 547,
+        "wires": []
+    },
+    {
+        "id": "1e78a7538f270961",
+        "type": "change",
+        "z": "21352aaf323425fc",
+        "name": "Store Token",
+        "rules": [
+            {
+                "t": "set",
+                "p": "Token",
+                "pt": "flow",
+                "to": "payload.access_token",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "app_id",
+                "pt": "flow",
+                "to": "payload.app_id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1027,
+        "y": 427,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "4680f2272e62e49a",
+        "type": "inject",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 605,
+        "wires": [
+            [
+                "2663534f8ce0b254"
+            ]
+        ]
+    },
+    {
+        "id": "d68198de5c76f40c",
+        "type": "http request",
+        "z": "21352aaf323425fc",
+        "name": "Send Order",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-m.sandbox.paypal.com/v2/checkout/orders",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 637,
+        "y": 603,
+        "wires": [
+            [
+                "0d560c87a334c4bd"
+            ]
+        ]
+    },
+    {
+        "id": "0743e42a49a8f0a7",
+        "type": "change",
+        "z": "21352aaf323425fc",
+        "name": "Create Order",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.PayPal-Request-Id",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "headers.Accept",
+                "pt": "msg",
+                "to": "application/json",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Accept-Language",
+                "pt": "msg",
+                "to": "en_US",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Authorization",
+                "pt": "msg",
+                "to": "\"Bearer \" & $flowContext('Token') ",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "headers.Content-Type",
+                "pt": "msg",
+                "to": "application/json",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\"intent\":\"CAPTURE\",\"processing_instruction\":\"ORDER_COMPLETE_ON_PAYMENT_APPROVAL\",\"purchase_units\":[{\"amount\":{\"currency_code\":\"USD\",\"value\":20}}],\"application_context\":{\"brand_name\":\"\",\"landing_page\":\"LOGIN\",\"shipping_preference\":\"GET_FROM_FILE\",\"user_action\":\"PAY_NOW\",\"return_url\":\"http://MyURL/thankyou\"}}",
+                "tot": "json"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 436,
+        "y": 601,
+        "wires": [
+            [
+                "88239836e1ced690",
+                "d68198de5c76f40c"
+            ]
+        ]
+    },
+    {
+        "id": "2663534f8ce0b254",
+        "type": "uuid",
+        "z": "21352aaf323425fc",
+        "uuidVersion": "v4",
+        "namespaceType": "",
+        "namespace": "",
+        "namespaceCustom": "",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "x": 278,
+        "y": 603,
+        "wires": [
+            [
+                "0743e42a49a8f0a7"
+            ]
+        ]
+    },
+    {
+        "id": "0d560c87a334c4bd",
+        "type": "change",
+        "z": "21352aaf323425fc",
+        "name": "capture approval link",
+        "rules": [
+            {
+                "t": "set",
+                "p": "approval",
+                "pt": "flow",
+                "to": "payload.links[1].href",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "capture",
+                "pt": "flow",
+                "to": "payload.links[3].href",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 866,
+        "y": 600,
+        "wires": [
+            [
+                "88239836e1ced690"
+            ]
+        ]
+    },
+    {
+        "id": "b14fc26dec5bcd54",
+        "type": "http in",
+        "z": "21352aaf323425fc",
+        "name": "thanks page",
+        "url": "/thankyou",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 186,
+        "y": 1082,
+        "wires": [
+            [
+                "20b653679f0b184c",
+                "6ac7e4938f49fc8d"
+            ]
+        ]
+    },
+    {
+        "id": "20b653679f0b184c",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 389,
+        "y": 1034,
+        "wires": []
+    },
+    {
+        "id": "0f7021a63bea8916",
+        "type": "http in",
+        "z": "21352aaf323425fc",
+        "name": "Get shipping and pay info",
+        "url": "/finalizeOrder",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 347,
+        "y": 796,
+        "wires": [
+            [
+                "0eab4672330ceedb",
+                "e76c2666984ff218"
+            ]
+        ]
+    },
+    {
+        "id": "317be69a81cf6e61",
+        "type": "template",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<style>\n    \n@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');\n\nbody{\n  background: url('http://all4desktop.com/data_images/original/4236532-background-images.jpg');\n  font-family: 'Roboto Condensed', sans-serif;\n  color: #262626;\n  margin: 5% 0;\n}\n.container{\n  width: 100%;\n  padding-right: 15px;\n  padding-left: 15px;\n  margin-right: auto;\n  margin-left: auto;\n}\n@media (min-width: 1200px)\n{\n  .container{\n    max-width: 1140px;\n  }\n}\n.d-flex{\n  display: flex;\n  flex-direction: row;\n  background: #f6f6f6;\n  border-radius: 0 0 5px 5px;\n  padding: 25px;\n}\nform{\n  flex: 4;\n}\n.Yorder{\n  flex: 2;\n}\n.title{\n  background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5195A8), color-stop(100, #70EAFF));\n  background: -moz-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);\n  background: -ms-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);\n  background: -o-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);\n  background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);\n  border-radius:5px 5px 0 0 ;\n  padding: 20px;\n  color: #f6f6f6;\n}\nh2{\n  margin: 0;\n  padding-left: 15px; \n}\n.required{\n  color: red;\n}\nlabel, table{\n  display: block;\n  margin: 15px;\n}\nlabel>span{\n  float: left;\n  width: 25%;\n  margin-top: 12px;\n  padding-right: 10px;\n}\ninput[type=\"text\"], input[type=\"tel\"], input[type=\"email\"], select\n{\n  width: 70%;\n  height: 30px;\n  padding: 5px 10px;\n  margin-bottom: 10px;\n  border: 1px solid #dadada;\n  color: #888;\n}\nselect{\n  width: 72%;\n  height: 45px;\n  padding: 5px 10px;\n  margin-bottom: 10px;\n}\n.Yorder{\n  margin-top: 15px;\n  height: 600px;\n  padding: 20px;\n  border: 1px solid #dadada;\n}\ntable{\n  margin: 0;\n  padding: 0;\n}\nth{\n  border-bottom: 1px solid #dadada;\n  padding: 10px 0;\n}\ntr>td:nth-child(1){\n  text-align: left;\n  color: #2d2d2a;\n}\ntr>td:nth-child(2){\n  text-align: right;\n  color: #52ad9c;\n}\ntd{\n  border-bottom: 1px solid #dadada;\n  padding: 25px 25px 25px 0;\n}\n\np{\n  display: block;\n  color: #888;\n  margin: 0;\n  padding-left: 25px;\n}\n.Yorder>div{\n  padding: 15px 0; \n}\n\nbutton{\n  width: 100%;\n  margin-top: 10px;\n  padding: 10px;\n  border: none;\n  border-radius: 30px;\n  background: #52ad9c;\n  color: #fff;\n  font-size: 15px;\n  font-weight: bold;\n}\nbutton:hover{\n  cursor: pointer;\n  background: #428a7d;\n}\n</style>\n\n<div class=\"container\">\n  <div class=\"title\">\n      <h2>Finalize Your Order</h2>\n  </div>\n<div class=\"d-flex\">\n  <form action=\"\" method=\"\">\n    <label>\n      <span class=\"fname\">First Name <span class=\"required\">*</span></span>\n      <input type=\"text\" name=\"fname\">\n    </label>\n    <label>\n      <span class=\"lname\">Last Name <span class=\"required\">*</span></span>\n      <input type=\"text\" name=\"lname\">\n    </label>\n    <label>\n      <span>Company Name (Optional)</span>\n      <input type=\"text\" name=\"cn\">\n    </label>\n    <label>\n      <span>Country <span class=\"required\">*</span></span>\n      <select name=\"selection\">\n        <option value=\"select\">Select a country...</option>\n        <option value=\"AFG\">Afghanistan</option>\n        <option value=\"ALA\">Åland Islands</option>\n        <option value=\"ALB\">Albania</option>\n        <option value=\"DZA\">Algeria</option>\n        <option value=\"ASM\">American Samoa</option>\n        <option value=\"AND\">Andorra</option>\n        <option value=\"AGO\">Angola</option>\n        <option value=\"AIA\">Anguilla</option>\n        <option value=\"ATA\">Antarctica</option>\n        <option value=\"ATG\">Antigua and Barbuda</option>\n        <option value=\"ARG\">Argentina</option>\n        <option value=\"ARM\">Armenia</option>\n        <option value=\"ABW\">Aruba</option>\n        <option value=\"AUS\">Australia</option>\n        <option value=\"AUT\">Austria</option>\n        <option value=\"AZE\">Azerbaijan</option>\n        <option value=\"BHS\">Bahamas</option>\n        <option value=\"BHR\">Bahrain</option>\n        <option value=\"BGD\">Bangladesh</option>\n        <option value=\"BRB\">Barbados</option>\n        <option value=\"BLR\">Belarus</option>\n        <option value=\"BEL\">Belgium</option>\n        <option value=\"BLZ\">Belize</option>\n        <option value=\"BEN\">Benin</option>\n        <option value=\"BMU\">Bermuda</option>\n        <option value=\"BTN\">Bhutan</option>\n        <option value=\"BOL\">Bolivia, Plurinational State of</option>\n        <option value=\"BES\">Bonaire, Sint Eustatius and Saba</option>\n        <option value=\"BIH\">Bosnia and Herzegovina</option>\n        <option value=\"BWA\">Botswana</option>\n        <option value=\"BVT\">Bouvet Island</option>\n        <option value=\"BRA\">Brazil</option>\n        <option value=\"IOT\">British Indian Ocean Territory</option>\n        <option value=\"BRN\">Brunei Darussalam</option>\n        <option value=\"BGR\">Bulgaria</option>\n        <option value=\"BFA\">Burkina Faso</option>\n        <option value=\"BDI\">Burundi</option>\n        <option value=\"KHM\">Cambodia</option>\n        <option value=\"CMR\">Cameroon</option>\n        <option value=\"CAN\">Canada</option>\n        <option value=\"CPV\">Cape Verde</option>\n        <option value=\"CYM\">Cayman Islands</option>\n        <option value=\"CAF\">Central African Republic</option>\n        <option value=\"TCD\">Chad</option>\n        <option value=\"CHL\">Chile</option>\n        <option value=\"CHN\">China</option>\n        <option value=\"CXR\">Christmas Island</option>\n        <option value=\"CCK\">Cocos (Keeling) Islands</option>\n        <option value=\"COL\">Colombia</option>\n        <option value=\"COM\">Comoros</option>\n        <option value=\"COG\">Congo</option>\n        <option value=\"COD\">Congo, the Democratic Republic of the</option>\n        <option value=\"COK\">Cook Islands</option>\n        <option value=\"CRI\">Costa Rica</option>\n        <option value=\"CIV\">Côte d'Ivoire</option>\n        <option value=\"HRV\">Croatia</option>\n        <option value=\"CUB\">Cuba</option>\n        <option value=\"CUW\">Curaçao</option>\n        <option value=\"CYP\">Cyprus</option>\n        <option value=\"CZE\">Czech Republic</option>\n        <option value=\"DNK\">Denmark</option>\n        <option value=\"DJI\">Djibouti</option>\n        <option value=\"DMA\">Dominica</option>\n        <option value=\"DOM\">Dominican Republic</option>\n        <option value=\"ECU\">Ecuador</option>\n        <option value=\"EGY\">Egypt</option>\n        <option value=\"SLV\">El Salvador</option>\n        <option value=\"GNQ\">Equatorial Guinea</option>\n        <option value=\"ERI\">Eritrea</option>\n        <option value=\"EST\">Estonia</option>\n        <option value=\"ETH\">Ethiopia</option>\n        <option value=\"FLK\">Falkland Islands (Malvinas)</option>\n        <option value=\"FRO\">Faroe Islands</option>\n        <option value=\"FJI\">Fiji</option>\n        <option value=\"FIN\">Finland</option>\n        <option value=\"FRA\">France</option>\n        <option value=\"GUF\">French Guiana</option>\n        <option value=\"PYF\">French Polynesia</option>\n        <option value=\"ATF\">French Southern Territories</option>\n        <option value=\"GAB\">Gabon</option>\n        <option value=\"GMB\">Gambia</option>\n        <option value=\"GEO\">Georgia</option>\n        <option value=\"DEU\">Germany</option>\n        <option value=\"GHA\">Ghana</option>\n        <option value=\"GIB\">Gibraltar</option>\n        <option value=\"GRC\">Greece</option>\n        <option value=\"GRL\">Greenland</option>\n        <option value=\"GRD\">Grenada</option>\n        <option value=\"GLP\">Guadeloupe</option>\n        <option value=\"GUM\">Guam</option>\n        <option value=\"GTM\">Guatemala</option>\n        <option value=\"GGY\">Guernsey</option>\n        <option value=\"GIN\">Guinea</option>\n        <option value=\"GNB\">Guinea-Bissau</option>\n        <option value=\"GUY\">Guyana</option>\n        <option value=\"HTI\">Haiti</option>\n        <option value=\"HMD\">Heard Island and McDonald Islands</option>\n        <option value=\"VAT\">Holy See (Vatican City State)</option>\n        <option value=\"HND\">Honduras</option>\n        <option value=\"HKG\">Hong Kong</option>\n        <option value=\"HUN\">Hungary</option>\n        <option value=\"ISL\">Iceland</option>\n        <option value=\"IND\">India</option>\n        <option value=\"IDN\">Indonesia</option>\n        <option value=\"IRN\">Iran, Islamic Republic of</option>\n        <option value=\"IRQ\">Iraq</option>\n        <option value=\"IRL\">Ireland</option>\n        <option value=\"IMN\">Isle of Man</option>\n        <option value=\"ISR\">Israel</option>\n        <option value=\"ITA\">Italy</option>\n        <option value=\"JAM\">Jamaica</option>\n        <option value=\"JPN\">Japan</option>\n        <option value=\"JEY\">Jersey</option>\n        <option value=\"JOR\">Jordan</option>\n        <option value=\"KAZ\">Kazakhstan</option>\n        <option value=\"KEN\">Kenya</option>\n        <option value=\"KIR\">Kiribati</option>\n        <option value=\"PRK\">Korea, Democratic People's Republic of</option>\n        <option value=\"KOR\">Korea, Republic of</option>\n        <option value=\"KWT\">Kuwait</option>\n        <option value=\"KGZ\">Kyrgyzstan</option>\n        <option value=\"LAO\">Lao People's Democratic Republic</option>\n        <option value=\"LVA\">Latvia</option>\n        <option value=\"LBN\">Lebanon</option>\n        <option value=\"LSO\">Lesotho</option>\n        <option value=\"LBR\">Liberia</option>\n        <option value=\"LBY\">Libya</option>\n        <option value=\"LIE\">Liechtenstein</option>\n        <option value=\"LTU\">Lithuania</option>\n        <option value=\"LUX\">Luxembourg</option>\n        <option value=\"MAC\">Macao</option>\n        <option value=\"MKD\">Macedonia, the former Yugoslav Republic of</option>\n        <option value=\"MDG\">Madagascar</option>\n        <option value=\"MWI\">Malawi</option>\n        <option value=\"MYS\">Malaysia</option>\n        <option value=\"MDV\">Maldives</option>\n        <option value=\"MLI\">Mali</option>\n        <option value=\"MLT\">Malta</option>\n        <option value=\"MHL\">Marshall Islands</option>\n        <option value=\"MTQ\">Martinique</option>\n        <option value=\"MRT\">Mauritania</option>\n        <option value=\"MUS\">Mauritius</option>\n        <option value=\"MYT\">Mayotte</option>\n        <option value=\"MEX\">Mexico</option>\n        <option value=\"FSM\">Micronesia, Federated States of</option>\n        <option value=\"MDA\">Moldova, Republic of</option>\n        <option value=\"MCO\">Monaco</option>\n        <option value=\"MNG\">Mongolia</option>\n        <option value=\"MNE\">Montenegro</option>\n        <option value=\"MSR\">Montserrat</option>\n        <option value=\"MAR\">Morocco</option>\n        <option value=\"MOZ\">Mozambique</option>\n        <option value=\"MMR\">Myanmar</option>\n        <option value=\"NAM\">Namibia</option>\n        <option value=\"NRU\">Nauru</option>\n        <option value=\"NPL\">Nepal</option>\n        <option value=\"NLD\">Netherlands</option>\n        <option value=\"NCL\">New Caledonia</option>\n        <option value=\"NZL\">New Zealand</option>\n        <option value=\"NIC\">Nicaragua</option>\n        <option value=\"NER\">Niger</option>\n        <option value=\"NGA\">Nigeria</option>\n        <option value=\"NIU\">Niue</option>\n        <option value=\"NFK\">Norfolk Island</option>\n        <option value=\"MNP\">Northern Mariana Islands</option>\n        <option value=\"NOR\">Norway</option>\n        <option value=\"OMN\">Oman</option>\n        <option value=\"PAK\">Pakistan</option>\n        <option value=\"PLW\">Palau</option>\n        <option value=\"PSE\">Palestinian Territory, Occupied</option>\n        <option value=\"PAN\">Panama</option>\n        <option value=\"PNG\">Papua New Guinea</option>\n        <option value=\"PRY\">Paraguay</option>\n        <option value=\"PER\">Peru</option>\n        <option value=\"PHL\">Philippines</option>\n        <option value=\"PCN\">Pitcairn</option>\n        <option value=\"POL\">Poland</option>\n        <option value=\"PRT\">Portugal</option>\n        <option value=\"PRI\">Puerto Rico</option>\n        <option value=\"QAT\">Qatar</option>\n        <option value=\"REU\">Réunion</option>\n        <option value=\"ROU\">Romania</option>\n        <option value=\"RUS\">Russian Federation</option>\n        <option value=\"RWA\">Rwanda</option>\n        <option value=\"BLM\">Saint Barthélemy</option>\n        <option value=\"SHN\">Saint Helena, Ascension and Tristan da Cunha</option>\n        <option value=\"KNA\">Saint Kitts and Nevis</option>\n        <option value=\"LCA\">Saint Lucia</option>\n        <option value=\"MAF\">Saint Martin (French part)</option>\n        <option value=\"SPM\">Saint Pierre and Miquelon</option>\n        <option value=\"VCT\">Saint Vincent and the Grenadines</option>\n        <option value=\"WSM\">Samoa</option>\n        <option value=\"SMR\">San Marino</option>\n        <option value=\"STP\">Sao Tome and Principe</option>\n        <option value=\"SAU\">Saudi Arabia</option>\n        <option value=\"SEN\">Senegal</option>\n        <option value=\"SRB\">Serbia</option>\n        <option value=\"SYC\">Seychelles</option>\n        <option value=\"SLE\">Sierra Leone</option>\n        <option value=\"SGP\">Singapore</option>\n        <option value=\"SXM\">Sint Maarten (Dutch part)</option>\n        <option value=\"SVK\">Slovakia</option>\n        <option value=\"SVN\">Slovenia</option>\n        <option value=\"SLB\">Solomon Islands</option>\n        <option value=\"SOM\">Somalia</option>\n        <option value=\"ZAF\">South Africa</option>\n        <option value=\"SGS\">South Georgia and the South Sandwich Islands</option>\n        <option value=\"SSD\">South Sudan</option>\n        <option value=\"ESP\">Spain</option>\n        <option value=\"LKA\">Sri Lanka</option>\n        <option value=\"SDN\">Sudan</option>\n        <option value=\"SUR\">Suriname</option>\n        <option value=\"SJM\">Svalbard and Jan Mayen</option>\n        <option value=\"SWZ\">Swaziland</option>\n        <option value=\"SWE\">Sweden</option>\n        <option value=\"CHE\">Switzerland</option>\n        <option value=\"SYR\">Syrian Arab Republic</option>\n        <option value=\"TWN\">Taiwan, Province of China</option>\n        <option value=\"TJK\">Tajikistan</option>\n        <option value=\"TZA\">Tanzania, United Republic of</option>\n        <option value=\"THA\">Thailand</option>\n        <option value=\"TLS\">Timor-Leste</option>\n        <option value=\"TGO\">Togo</option>\n        <option value=\"TKL\">Tokelau</option>\n        <option value=\"TON\">Tonga</option>\n        <option value=\"TTO\">Trinidad and Tobago</option>\n        <option value=\"TUN\">Tunisia</option>\n        <option value=\"TUR\">Turkey</option>\n        <option value=\"TKM\">Turkmenistan</option>\n        <option value=\"TCA\">Turks and Caicos Islands</option>\n        <option value=\"TUV\">Tuvalu</option>\n        <option value=\"UGA\">Uganda</option>\n        <option value=\"UKR\">Ukraine</option>\n        <option value=\"ARE\">United Arab Emirates</option>\n        <option value=\"GBR\">United Kingdom</option>\n        <option value=\"USA\">United States</option>\n        <option value=\"UMI\">United States Minor Outlying Islands</option>\n        <option value=\"URY\">Uruguay</option>\n        <option value=\"UZB\">Uzbekistan</option>\n        <option value=\"VUT\">Vanuatu</option>\n        <option value=\"VEN\">Venezuela, Bolivarian Republic of</option>\n        <option value=\"VNM\">Viet Nam</option>\n        <option value=\"VGB\">Virgin Islands, British</option>\n        <option value=\"VIR\">Virgin Islands, U.S.</option>\n        <option value=\"WLF\">Wallis and Futuna</option>\n        <option value=\"ESH\">Western Sahara</option>\n        <option value=\"YEM\">Yemen</option>\n        <option value=\"ZMB\">Zambia</option>\n        <option value=\"ZWE\">Zimbabwe</option>\n      </select>\n    </label>\n    <label>\n      <span>Street Address <span class=\"required\">*</span></span>\n      <input type=\"text\" name=\"houseadd\" placeholder=\"House number and street name\" required>\n    </label>\n    <label>\n      <span>&nbsp;</span>\n      <input type=\"text\" name=\"apartment\" placeholder=\"Apartment, suite, unit etc. (optional)\">\n    </label>\n    <label>\n      <span>Town / City <span class=\"required\">*</span></span>\n      <input type=\"text\" name=\"city\"> \n    </label>\n    <label>\n      <span>State / County <span class=\"required\">*</span></span>\n      <input type=\"text\" name=\"state\"> \n    </label>\n    <label>\n      <span>Postcode / ZIP <span class=\"required\">*</span></span>\n      <input type=\"text\" name=\"zip\"> \n    </label>\n    <label>\n      <span>Phone <span class=\"required\">*</span></span>\n      <input type=\"tel\" name=\"phone\"> \n    </label>\n    <label>\n      <span>Email Address <span class=\"required\">*</span></span>\n      <input type=\"email\" name=\"email\"> \n    </label>\n  <div class=\"Yorder\">\n    <table>\n      <tr>\n        <th colspan=\"2\">Your order</th>\n      </tr>\n      <tr>\n        <td>Subtotal</td>\n        <td>${{payload}}</td>\n      </tr>\n      <tr>\n        <td>Shipping</td>\n        <td>Free shipping</td>\n      </tr>\n    </table><br>\n    <div>\n      <input type=\"radio\" name=\"dbt\" value=\"dbt\" checked> Direct Bank Transfer\n    </div>\n    <p>\n        Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.\n    </p>\n    <div>\n      <input type=\"radio\" name=\"dbt\" value=\"cd\"> Cash on Delivery\n    </div>\n    <div>\n      <input type=\"radio\" name=\"dbt\" value=\"pp\"> Paypal <span>\n      <img src=\"https://www.logolynx.com/images/logolynx/c3/c36093ca9fb6c250f74d319550acac4d.jpeg\" alt=\"\" width=\"50\">\n      </span>\n    </div>\n    <button type=\"submit\" formtarget=\"_self\" formmethod=\"GET\" formenctype=\"application/x-www-form-urlencoded\" formaction=\"http://75.32.210.73:1880/submitOrder\">Place Order</button>\n  </div><!-- Yorder -->\n   </form>\n</div>\n</div>\n</body>",
+        "output": "str",
+        "x": 757,
+        "y": 807,
+        "wires": [
+            [
+                "c035ea2a778b4001"
+            ]
+        ]
+    },
+    {
+        "id": "c035ea2a778b4001",
+        "type": "http response",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 913,
+        "y": 804,
+        "wires": []
+    },
+    {
+        "id": "7c45963e6974093b",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 422,
+        "y": 915,
+        "wires": []
+    },
+    {
+        "id": "58a85392e5a9aaf5",
+        "type": "http in",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "url": "/submitOrder",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 189,
+        "y": 931,
+        "wires": [
+            [
+                "7c45963e6974093b",
+                "86befb186dcf4c61"
+            ]
+        ]
+    },
+    {
+        "id": "69a91177e4d387a8",
+        "type": "http response",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1284,
+        "y": 964,
+        "wires": []
+    },
+    {
+        "id": "dbd3b94d8935b274",
+        "type": "http in",
+        "z": "21352aaf323425fc",
+        "name": "Store Top",
+        "url": "/store",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 116,
+        "y": 737,
+        "wires": [
+            [
+                "cb52a91621c1f6b9"
+            ]
+        ]
+    },
+    {
+        "id": "2463c684085bac1e",
+        "type": "http response",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 559,
+        "y": 732,
+        "wires": []
+    },
+    {
+        "id": "cb52a91621c1f6b9",
+        "type": "template",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "html",
+        "syntax": "mustache",
+        "template": "<style>\n    \n@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:400,700');\n\nbody{\n  background: url('http://all4desktop.com/data_images/original/4236532-background-images.jpg');\n  font-family: 'Roboto Condensed', sans-serif;\n  color: #262626;\n  margin: 5% 0;\n}\n.container{\n  width: 100%;\n  padding-right: 15px;\n  padding-left: 15px;\n  margin-right: auto;\n  margin-left: auto;\n}\n@media (min-width: 1200px)\n{\n  .container{\n    max-width: 1140px;\n  }\n}\n.d-flex{\n  display: flex;\n  flex-direction: row;\n  background: #f6f6f6;\n  border-radius: 0 0 5px 5px;\n  padding: 25px;\n}\nform{\n  flex: 4;\n}\n.Yorder{\n  flex: 2;\n}\n.title{\n  background: -webkit-gradient(linear, left top, right bottom, color-stop(0, #5195A8), color-stop(100, #70EAFF));\n  background: -moz-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);\n  background: -ms-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);\n  background: -o-linear-gradient(top left, #5195A8 0%, #70EAFF 100%);\n  background: linear-gradient(to bottom right, #5195A8 0%, #70EAFF 100%);\n  border-radius:5px 5px 0 0 ;\n  padding: 20px;\n  color: #f6f6f6;\n}\nh2{\n  margin: 0;\n  padding-left: 15px; \n}\n.required{\n  color: red;\n}\nlabel, table{\n  display: block;\n  margin: 15px;\n}\nlabel>span{\n  float: left;\n  width: 25%;\n  margin-top: 12px;\n  padding-right: 10px;\n}\ninput[type=\"text], input[type=\"email\"], select\n{\n  width: 70%;\n  height: 30px;\n  padding: 5px 10px;\n  margin-bottom: 10px;\n  border: 1px solid #dadada;\n  color: #888;\n}\ninput[type=\"number\"], select\n{\n  width: 5%;\n  height: 30px;\n  padding: 5px 10px;\n  margin-bottom: 10px;\n  border: 1px solid #dadada;\n  color: #888;\n}\nselect{\n  width: 72%;\n  height: 45px;\n  padding: 5px 10px;\n  margin-bottom: 10px;\n}\n.Yorder{\n  margin-top: 15px;\n  height: 600px;\n  padding: 20px;\n  border: 1px solid #dadada;\n}\ntable{\n  margin: 0;\n  padding: 0;\n}\nth{\n  border-bottom: 1px solid #dadada;\n  padding: 10px 0;\n}\ntr>td:nth-child(1){\n  text-align: left;\n  color: #2d2d2a;\n}\ntr>td:nth-child(2){\n  text-align: right;\n  color: #52ad9c;\n}\ntd{\n  border-bottom: 1px solid #dadada;\n  padding: 25px 25px 25px 0;\n}\n\np{\n  display: block;\n  color: #888;\n  margin: 0;\n  padding-left: 25px;\n}\n.Yorder>div{\n  padding: 15px 0; \n}\n\nbutton{\n  width: 100%;\n  margin-top: 10px;\n  padding: 10px;\n  border: none;\n  border-radius: 30px;\n  background: #52ad9c;\n  color: #fff;\n  font-size: 15px;\n  font-weight: bold;\n}\nbutton:hover{\n  cursor: pointer;\n  background: #428a7d;\n}\n</style>\n\n<div class=\"container\">\n    <div class=\"title\">\n      <h2>Greg's Store</h2>\n    </div>\n    <div class=\"d-flex\">\n        <form action=\"\" name=\"products\" method=\"GET\" enctype=\"application/x-www-form-urlencoded>\">\n            <label>\n                Shirt $20.00\n            <input min=\"0\" size=\"2\" type=\"number\" name=\"shirtCount\">\n            </label>\n            <div class=\"button\">\n                <button type=\"submit\" formtarget=\"_self\" formmethod=\"GET\" formenctype=\"application/x-www-form-urlencoded\" name=\"Continue\" formaction=\"http://75.32.210.73:1880/finalizeOrder\">Continue</button>\n            </div>\n        </form>\n    </div>\n</div>\n</body>",
+        "output": "str",
+        "x": 332,
+        "y": 732,
+        "wires": [
+            [
+                "2463c684085bac1e"
+            ]
+        ]
+    },
+    {
+        "id": "0eab4672330ceedb",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 750,
+        "y": 735,
+        "wires": []
+    },
+    {
+        "id": "4b7d0acf6f805fc6",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Capture order here",
+        "info": "",
+        "x": 205,
+        "y": 1039,
+        "wires": []
+    },
+    {
+        "id": "ad1ddb28afe7f0ae",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Build order",
+        "info": "",
+        "x": 123,
+        "y": 701,
+        "wires": []
+    },
+    {
+        "id": "a4aa8517a81de4b0",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Create and Submit for approval",
+        "info": "",
+        "x": 239,
+        "y": 893,
+        "wires": []
+    },
+    {
+        "id": "f72f7d2af6a50dda",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Authenticate",
+        "info": "",
+        "x": 133,
+        "y": 346,
+        "wires": []
+    },
+    {
+        "id": "e76c2666984ff218",
+        "type": "change",
+        "z": "21352aaf323425fc",
+        "name": "calc total",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "$number(payload.shirtCount) * 20",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "order",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 584,
+        "y": 806,
+        "wires": [
+            [
+                "317be69a81cf6e61",
+                "d494231a76c6609f"
+            ]
+        ]
+    },
+    {
+        "id": "d494231a76c6609f",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 972,
+        "y": 743,
+        "wires": []
+    },
+    {
+        "id": "d934d0b556227145",
+        "type": "http request",
+        "z": "21352aaf323425fc",
+        "name": "Send Order",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://api-m.sandbox.paypal.com/v2/checkout/orders",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 721,
+        "y": 958,
+        "wires": [
+            [
+                "a577f417cd255dd6",
+                "18ef41e399b40723"
+            ]
+        ]
+    },
+    {
+        "id": "c963fba84a206a7b",
+        "type": "change",
+        "z": "21352aaf323425fc",
+        "name": "Create Order",
+        "rules": [
+            {
+                "t": "set",
+                "p": "uuid",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.PayPal-Request-Id",
+                "pt": "msg",
+                "to": "payload",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "headers.Accept",
+                "pt": "msg",
+                "to": "application/json",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Accept-Language",
+                "pt": "msg",
+                "to": "en_US",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Authorization",
+                "pt": "msg",
+                "to": "\"Bearer \" & $flowContext('Token') ",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "headers.Content-Type",
+                "pt": "msg",
+                "to": "application/json",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t    \"intent\": \"CAPTURE\",\t    \"processing_instruction\": \"ORDER_COMPLETE_ON_PAYMENT_APPROVAL\",\t    \"purchase_units\": [\t        {\t            \"amount\": {\t                \"currency_code\": \"USD\",\t                \"value\": $flowContext('order')\t            }\t        }\t    ],\t    \"application_context\": {\t        \"brand_name\": \"\",\t        \"landing_page\": \"LOGIN\",\t        \"shipping_preference\": \"GET_FROM_FILE\",\t        \"user_action\": \"PAY_NOW\",\t        \"return_url\": \"http://75.32.210.73:1880/thankyou\"\t    }\t}",
+                "tot": "jsonata"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 541,
+        "y": 958,
+        "wires": [
+            [
+                "d934d0b556227145",
+                "c46d7404a53de91d"
+            ]
+        ]
+    },
+    {
+        "id": "86befb186dcf4c61",
+        "type": "uuid",
+        "z": "21352aaf323425fc",
+        "uuidVersion": "v4",
+        "namespaceType": "",
+        "namespace": "",
+        "namespaceCustom": "",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "x": 400,
+        "y": 958,
+        "wires": [
+            [
+                "c963fba84a206a7b"
+            ]
+        ]
+    },
+    {
+        "id": "a577f417cd255dd6",
+        "type": "change",
+        "z": "21352aaf323425fc",
+        "name": "capture approval link",
+        "rules": [
+            {
+                "t": "set",
+                "p": "approval",
+                "pt": "flow",
+                "to": "payload.links[1].href",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "capture",
+                "pt": "flow",
+                "to": "payload.links[3].href",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.links[1].href",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 917,
+        "y": 958,
+        "wires": [
+            [
+                "c937cb518bc6d908",
+                "6cd82c681ac06451"
+            ]
+        ]
+    },
+    {
+        "id": "c46d7404a53de91d",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 673,
+        "y": 908,
+        "wires": []
+    },
+    {
+        "id": "c937cb518bc6d908",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1144,
+        "y": 919,
+        "wires": []
+    },
+    {
+        "id": "6cd82c681ac06451",
+        "type": "template",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<meta http-equiv=\"refresh\" content=\"2;url={{payload}}\" />",
+        "output": "str",
+        "x": 1134,
+        "y": 965,
+        "wires": [
+            [
+                "69a91177e4d387a8"
+            ]
+        ]
+    },
+    {
+        "id": "d5bc1581e1229654",
+        "type": "http request",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 850,
+        "y": 1075,
+        "wires": [
+            [
+                "9af922cb3a5d7fe3",
+                "1617d1b071ae77d3"
+            ]
+        ]
+    },
+    {
+        "id": "18ef41e399b40723",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 888,
+        "y": 915,
+        "wires": []
+    },
+    {
+        "id": "9af922cb3a5d7fe3",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1010,
+        "y": 1040,
+        "wires": []
+    },
+    {
+        "id": "0822ada1c53b073f",
+        "type": "inject",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 1131,
+        "wires": [
+            [
+                "6ac7e4938f49fc8d"
+            ]
+        ]
+    },
+    {
+        "id": "ba72f8ac9a50e8a0",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 1020,
+        "wires": []
+    },
+    {
+        "id": "6ac7e4938f49fc8d",
+        "type": "change",
+        "z": "21352aaf323425fc",
+        "name": "Create Capture",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.PayPal-Request-Id",
+                "pt": "msg",
+                "to": "uuid",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "headers.Accept",
+                "pt": "msg",
+                "to": "application/json",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Accept-Language",
+                "pt": "msg",
+                "to": "en_US",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Authorization",
+                "pt": "msg",
+                "to": "\"Bearer \" & $flowContext('Token') ",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "headers.Content-Type",
+                "pt": "msg",
+                "to": "application/json",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "{\t    \"intent\": \"CAPTURE\",\t    \"processing_instruction\": \"ORDER_COMPLETE_ON_PAYMENT_APPROVAL\",\t    \"purchase_units\": [\t        {\t            \"amount\": {\t                \"currency_code\": \"USD\",\t                \"value\": $flowContext('order')\t            }\t        }\t    ],\t    \"application_context\": {\t        \"brand_name\": \"\",\t        \"landing_page\": \"LOGIN\",\t        \"shipping_preference\": \"GET_FROM_FILE\",\t        \"user_action\": \"PAY_NOW\",\t        \"return_url\": \"http://75.32.210.73:1880/thankyou\"\t    }\t}",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "capture",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 605,
+        "y": 1073,
+        "wires": [
+            [
+                "d5bc1581e1229654",
+                "ba72f8ac9a50e8a0"
+            ]
+        ]
+    },
+    {
+        "id": "d4285847c7c75f74",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Test & Learn",
+        "info": "",
+        "x": 135,
+        "y": 563,
+        "wires": []
+    },
+    {
+        "id": "13a417d362ee39cf",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Scratch-built Store",
+        "info": "",
+        "x": 131,
+        "y": 161,
+        "wires": []
+    },
+    {
+        "id": "339ce2e113b4177d",
+        "type": "http response",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1330,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "88a3069b3caa13a4",
+        "type": "template",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<h2>Thank you for your order!</h2>\n<p>Greg's Store</p>\n<p>Status: {{payload.status}} Transaction ID: {{payload.id}}</p>\n<p>Thank you {{payload.payer.name.given_name}}</p>\n",
+        "output": "str",
+        "x": 1080,
+        "y": 1120,
+        "wires": [
+            [
+                "339ce2e113b4177d",
+                "3b65fab3b7aff9d7"
+            ]
+        ]
+    },
+    {
+        "id": "3b65fab3b7aff9d7",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1250,
+        "y": 1080,
+        "wires": []
+    },
+    {
+        "id": "afbf5e5e06ed705c",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Display thanks",
+        "info": "",
+        "x": 1120,
+        "y": 1160,
+        "wires": []
+    },
+    {
+        "id": "1617d1b071ae77d3",
+        "type": "switch",
+        "z": "21352aaf323425fc",
+        "name": "Approved or Voided?",
+        "property": "payload.status",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "COMPLETED",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "VOIDED",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 3,
+        "x": 900,
+        "y": 1160,
+        "wires": [
+            [
+                "88a3069b3caa13a4"
+            ],
+            [
+                "34d709024da65204"
+            ],
+            [
+                "9b310476c6a95227"
+            ]
+        ]
+    },
+    {
+        "id": "34d709024da65204",
+        "type": "template",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<h2>Transaction Cancelled!</h2>\n<p>Greg's Store</p>\n<p>Status: {{payload.status}} Transaction ID: {{payload.id}}</p>\n",
+        "output": "str",
+        "x": 1080,
+        "y": 1200,
+        "wires": [
+            [
+                "339ce2e113b4177d"
+            ]
+        ]
+    },
+    {
+        "id": "9b310476c6a95227",
+        "type": "debug",
+        "z": "21352aaf323425fc",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 1260,
+        "wires": []
+    },
+    {
+        "id": "329d9978984e2a31",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Impl note",
+        "info": "Need to update this with your callback URL",
+        "x": 440,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "33fe7223569295c9",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Add your creds here",
+        "info": "",
+        "x": 310,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "64a8fda4f4a95ec9",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Impl note",
+        "info": "Need to update the button action with your page URL",
+        "x": 340,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "d133229a7b6a7e21",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Impl note",
+        "info": "Need to update the button action with your page URL",
+        "x": 760,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "c258d70c3c3a53da",
+        "type": "comment",
+        "z": "21352aaf323425fc",
+        "name": "Impl note",
+        "info": "Need to update the button action with your page URL",
+        "x": 540,
+        "y": 1000,
+        "wires": []
+    },
+    {
+        "id": "45c4f096039ee80c",
+        "type": "http in",
+        "z": "9d0b790a3a03b629",
+        "name": "",
+        "url": "/pptest",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 199,
+        "y": 184,
+        "wires": [
+            [
+                "a553c1e0e7a2430c"
+            ]
+        ]
+    },
+    {
+        "id": "a553c1e0e7a2430c",
+        "type": "template",
+        "z": "9d0b790a3a03b629",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <!-- Add meta tags for mobile and IE -->\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n    <title> PayPal Checkout Integration | Client Demo </title>\n</head>\n\n<body>\n    <h1>Greg's Store</h1>\n    </p>this is where the order page would go</p>\n    <!-- Set up a container element for the button -->\n    <div id=\"paypal-button-container\"></div>\n\n    <!-- Include the PayPal JavaScript SDK -->\n    <script src=\"https://www.paypal.com/sdk/js?client-id=test&currency=USD\"></script>\n\n    <script>\n        // Render the PayPal button into #paypal-button-container\n        paypal.Buttons({\n\n            // Set up the transaction\n            createOrder: function(data, actions) {\n                return actions.order.create({\n                    purchase_units: [{\n                        amount: {\n                            value: '88.44'\n                        }\n                    }]\n                });\n            },\n\n            // Finalize the transaction\n            onApprove: function(data, actions) {\n                return actions.order.capture().then(function(orderData) {\n                    // Successful capture! For demo purposes:\n                    console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));\n                    var transaction = orderData.purchase_units[0].payments.captures[0];\n                    alert('Transaction '+ transaction.status + ': ' + transaction.id + '\\n\\nSee console for all available details');\n\n                    // Replace the above to show a success message within this page, e.g.\n                    // const element = document.getElementById('paypal-button-container');\n                    // element.innerHTML = '';\n                    // element.innerHTML = '<h3>Thank you for your payment!</h3>';\n                    // Or go to another URL:  actions.redirect('thank_you.html');\n                });\n            }\n\n\n        }).render('#paypal-button-container');\n    </script>\n</body>\n\n</html>\n    ",
+        "output": "str",
+        "x": 400,
+        "y": 185,
+        "wires": [
+            [
+                "d0011b19322dbc5c"
+            ]
+        ]
+    },
+    {
+        "id": "d0011b19322dbc5c",
+        "type": "http response",
+        "z": "9d0b790a3a03b629",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 624,
+        "y": 178,
+        "wires": []
+    },
+    {
+        "id": "be91deeff34408b3",
+        "type": "http in",
+        "z": "9d0b790a3a03b629",
+        "name": "",
+        "url": "/pptest2",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 209,
+        "y": 283,
+        "wires": [
+            [
+                "e8e7dd5d56c21050"
+            ]
+        ]
+    },
+    {
+        "id": "e8e7dd5d56c21050",
+        "type": "template",
+        "z": "9d0b790a3a03b629",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "\n<!DOCTYPE html>\n<html lang=\"en\">\n\n<head>\n    <!-- Add meta tags for mobile and IE -->\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n    <title> PayPal Checkout Integration | Responsive Buttons </title>\n\n    <style>\n        /* Media query for mobile viewport */\n        @media screen and (max-width: 400px) {\n            #paypal-button-container {\n                width: 100%;\n            }\n        }\n        \n        /* Media query for desktop viewport */\n        @media screen and (min-width: 400px) {\n            #paypal-button-container {\n                width: 250px;\n            }\n        }\n    </style>\n</head>\n\n<body>\n    <!-- Set up a container element for the button -->\n    <div id=\"paypal-button-container\"></div>\n\n    <!-- Include the PayPal JavaScript SDK -->\n    <script src=\"https://www.paypal.com/sdk/js?client-id=test&currency=USD\"></script>\n\n    <script>\n        // Render the PayPal button into #paypal-button-container\n        paypal.Buttons().render('#paypal-button-container');\n    </script>\n</body>\n\n</html>\n    ",
+        "output": "str",
+        "x": 410,
+        "y": 284,
+        "wires": [
+            [
+                "c8f653d01615687c"
+            ]
+        ]
+    },
+    {
+        "id": "c8f653d01615687c",
+        "type": "http response",
+        "z": "9d0b790a3a03b629",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 634,
+        "y": 277,
+        "wires": []
+    },
+    {
+        "id": "1a7b9f19d602bf9c",
+        "type": "comment",
+        "z": "9d0b790a3a03b629",
+        "name": "Simple copy/paste of PP's examples",
+        "info": "",
+        "x": 288,
+        "y": 128,
+        "wires": []
+    }
+]
