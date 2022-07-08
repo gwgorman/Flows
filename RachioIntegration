@@ -1,0 +1,545 @@
+[
+    {
+        "id": "ba27fd9a553910a2",
+        "type": "tab",
+        "label": "Rachio Irrigation",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1794093b36f0ea6a",
+        "type": "credentials",
+        "z": "ba27fd9a553910a2",
+        "name": "API Key",
+        "props": [
+            {
+                "value": "APIKey",
+                "type": "msg"
+            }
+        ],
+        "x": 280,
+        "y": 240,
+        "wires": [
+            [
+                "c8a1dc9d7cd7aee7"
+            ]
+        ]
+    },
+    {
+        "id": "68aa144663fd92de",
+        "type": "change",
+        "z": "ba27fd9a553910a2",
+        "name": "Get Person",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "https://api.rach.io/1/public/person/info",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "method",
+                "pt": "msg",
+                "to": "GET",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Authorization",
+                "pt": "msg",
+                "to": "'Bearer ' & $.APIKey",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "headers.Content-Type",
+                "pt": "msg",
+                "to": "application/json",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 630,
+        "y": 240,
+        "wires": [
+            [
+                "b88ddba08c4f573a"
+            ]
+        ]
+    },
+    {
+        "id": "061c54f809b2fd72",
+        "type": "inject",
+        "z": "ba27fd9a553910a2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "1794093b36f0ea6a"
+            ]
+        ]
+    },
+    {
+        "id": "c58145babfeea499",
+        "type": "debug",
+        "z": "ba27fd9a553910a2",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "27a800ddd3573fe4",
+        "type": "change",
+        "z": "ba27fd9a553910a2",
+        "name": "Store PersonID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "PersonID",
+                "pt": "flow",
+                "to": "payload.id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 980,
+        "y": 160,
+        "wires": [
+            [
+                "b034c5cab1aadfbb",
+                "c58145babfeea499"
+            ]
+        ]
+    },
+    {
+        "id": "b034c5cab1aadfbb",
+        "type": "change",
+        "z": "ba27fd9a553910a2",
+        "name": "Get Device ID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "'https://api.rach.io/1/public/person/' & $.payload.id",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "method",
+                "pt": "msg",
+                "to": "GET",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Authorization",
+                "pt": "msg",
+                "to": "'Bearer ' & $.APIKey",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "headers.Content-Type",
+                "pt": "msg",
+                "to": "application/json",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1140,
+        "y": 240,
+        "wires": [
+            [
+                "d4fd11829089b30a"
+            ]
+        ]
+    },
+    {
+        "id": "6b16956aa5725eb6",
+        "type": "change",
+        "z": "ba27fd9a553910a2",
+        "name": "Store DeviceID",
+        "rules": [
+            {
+                "t": "set",
+                "p": "DeviceID",
+                "pt": "flow",
+                "to": "payload.devices[0].id",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1520,
+        "y": 160,
+        "wires": [
+            [
+                "f6c146d94c87aaee"
+            ]
+        ]
+    },
+    {
+        "id": "b88ddba08c4f573a",
+        "type": "http request",
+        "z": "ba27fd9a553910a2",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 810,
+        "y": 240,
+        "wires": [
+            [
+                "27a800ddd3573fe4"
+            ]
+        ]
+    },
+    {
+        "id": "d4fd11829089b30a",
+        "type": "http request",
+        "z": "ba27fd9a553910a2",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 1330,
+        "y": 240,
+        "wires": [
+            [
+                "6b16956aa5725eb6"
+            ]
+        ]
+    },
+    {
+        "id": "f6c146d94c87aaee",
+        "type": "debug",
+        "z": "ba27fd9a553910a2",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1690,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "b0d234e058b219a3",
+        "type": "change",
+        "z": "ba27fd9a553910a2",
+        "name": "Get today's events",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "url",
+                "pt": "msg",
+                "to": "'https://api.rach.io/1/public/device/' & $.DeviceID & '/event?startTime=' &\t $toMillis($now('[Y0001]-[M01]-[D01]T00:00:00.0')) & '&endTime=' & $toMillis($now())",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "method",
+                "pt": "msg",
+                "to": "GET",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "headers.Authorization",
+                "pt": "msg",
+                "to": "'Bearer ' & $.APIKey",
+                "tot": "jsonata"
+            },
+            {
+                "t": "set",
+                "p": "headers.Content-Type",
+                "pt": "msg",
+                "to": "application/json",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 460,
+        "wires": [
+            [
+                "5684060f07152476"
+            ]
+        ]
+    },
+    {
+        "id": "2c3ee6e0e0300fae",
+        "type": "debug",
+        "z": "ba27fd9a553910a2",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1050,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "9e92e1883c4002d2",
+        "type": "inject",
+        "z": "ba27fd9a553910a2",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "7200",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "topic": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 460,
+        "wires": [
+            [
+                "6397b735bbba4954"
+            ]
+        ]
+    },
+    {
+        "id": "6397b735bbba4954",
+        "type": "change",
+        "z": "ba27fd9a553910a2",
+        "name": "Get Globals",
+        "rules": [
+            {
+                "t": "set",
+                "p": "DeviceID",
+                "pt": "msg",
+                "to": "DeviceID",
+                "tot": "flow"
+            },
+            {
+                "t": "set",
+                "p": "APIKey",
+                "pt": "msg",
+                "to": "APIKey",
+                "tot": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 290,
+        "y": 460,
+        "wires": [
+            [
+                "b0d234e058b219a3"
+            ]
+        ]
+    },
+    {
+        "id": "5684060f07152476",
+        "type": "http request",
+        "z": "ba27fd9a553910a2",
+        "name": "",
+        "method": "use",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 690,
+        "y": 460,
+        "wires": [
+            [
+                "2c3ee6e0e0300fae",
+                "fd6100a13e6d75b6"
+            ]
+        ]
+    },
+    {
+        "id": "c8a1dc9d7cd7aee7",
+        "type": "change",
+        "z": "ba27fd9a553910a2",
+        "name": "Save API Key in Global",
+        "rules": [
+            {
+                "t": "set",
+                "p": "APIKey",
+                "pt": "flow",
+                "to": "APIKey",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 450,
+        "y": 160,
+        "wires": [
+            [
+                "68aa144663fd92de"
+            ]
+        ]
+    },
+    {
+        "id": "b5cefc6ba77161b7",
+        "type": "comment",
+        "z": "ba27fd9a553910a2",
+        "name": "Init globals we need later",
+        "info": "",
+        "x": 160,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "8c595693e05a3a59",
+        "type": "comment",
+        "z": "ba27fd9a553910a2",
+        "name": "Periodic check of events",
+        "info": "",
+        "x": 180,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "fd6100a13e6d75b6",
+        "type": "ui_template",
+        "z": "ba27fd9a553910a2",
+        "group": "87ec3d0c242f0c79",
+        "name": "",
+        "order": 3,
+        "width": "24",
+        "height": "20",
+        "format": "<head>\n    <style>\n    \ntr:nth-child(even) td {\n    background: black;\n    color: white;\n}\n\ntr:nth-child(odd) td {\n    background: lightgray;\n    color: black;\n}\n    </style>\n</head>\n\n<table>\n  <tr ng-repeat=\"obj in msg.payload\">\n    <td width=200>{{ obj.eventDate | date:'short' }}</td>\n    <td>{{ obj.subType }} </td>\n    <td>{{ obj.summary }}</td>\n  </tr>\n</table>",
+        "storeOutMessages": false,
+        "fwdInMessages": false,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 860,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "87ec3d0c242f0c79",
+        "type": "ui_group",
+        "name": "Sprinkler Log",
+        "tab": "7dacd1899a023c99",
+        "order": 1,
+        "disp": true,
+        "width": "24",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "7dacd1899a023c99",
+        "type": "ui_tab",
+        "name": "Sprinkler System",
+        "icon": "wi-wu-chancerain",
+        "order": 11,
+        "disabled": false,
+        "hidden": false
+    }
+]
